@@ -9,6 +9,7 @@ function requestApi(searchTerm) {
         .then((response) => response.json())
         .then((result)=> result.filter((element)=>element.name.toLowerCase().includes(searchTerm)))
         .then((result) => displayResults(result))
+        .catch((erro)=>console.error(erro))
 }
 
 function displayResults(result) {
@@ -43,10 +44,5 @@ document.addEventListener('input', function () {
         resultArtist.classList.remove('hidden');
         requestApi(searchTerm);
     }
-    // if (searchTerm === '') {
-    //     resultPlaylist.classList.add('hidden');
-    //     resultArtist.classList.remove('hidden');
-    //     return
-    // }
     
 })
